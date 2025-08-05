@@ -24,7 +24,7 @@ const getStatusText = (status) => {
     case "3":
       return "❌ Отклонено";
     case "5":
-      return "⏸ Холдено";
+      return "⏸ Холд";
     default:
       return "❓ Неизвестно";
   }
