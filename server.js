@@ -39,21 +39,18 @@ app.get("/", async (req, res) => {
     geo = "unknown",
     ip: userIp = "N/A",
     ref_id = "N/A",
+    device_type = "unknown",
     status = "0"
   } = req.query;
 
-  if (status !== "1") {
-    console.log(`🔕 Пропущена конверсия со статусом: ${status}`);
-    return res.send("Ignored (non-approved)");
-  }
-
   const statusText = getStatusText(status);
 
-  const message = `🔥 Новая конверсия!
+  const message = `🔥 Конверсия получена!
 💡 Оффер: ${offer}
 📌 Sub1: ${sub1}
 💰 Выплата: ${sum}
 📥 Статус: ${statusText}
+📱 Устройство: ${device_type}
 🌍 Страна: ${geo}
 🌐 IP пользователя: ${userIp}
 🔗 Click ID: ${ref_id}`;
