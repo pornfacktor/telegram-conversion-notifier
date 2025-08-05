@@ -5,15 +5,6 @@ const app = express();
 const botToken = "8377002181:AAE0WW3ne8F4-WjA_EOwLVWTucjBZNHjUX4";
 const chatId = "793835561";
 
-// Получение IP запроса
-const getIP = (req) => {
-  return (
-    req.headers["x-forwarded-for"]?.split(",")[0] ||
-    req.socket?.remoteAddress ||
-    ""
-  ).replace("::ffff:", "");
-};
-
 // Расшифровка статуса
 const getStatusText = (status) => {
   switch (status) {
@@ -26,12 +17,11 @@ const getStatusText = (status) => {
     case "5":
       return "⏸ Холд";
     default:
-      return "❓ Неизвестно";
+      return `❓ Неизвестно (${status})`;
   }
 };
 
 app.get("/", async (req, res) => {
-  const ip = getIP(req);
   const {
     sum = "0",
     sub1 = "unknown",
@@ -43,14 +33,9 @@ app.get("/", async (req, res) => {
     status = "0"
   } = req.query;
 
-  if (status !== "5") {
-    console.log(`🔕 Пропущено: статус = ${status} (не холд)`);
-    return res.send("Ignored (not hold)");
-  }
-
   const statusText = getStatusText(status);
 
-  const message = `🔥 Новая конверсия! В холде!
+  const message = `🔥 Новая конверсия!
 💡 Оффер: ${offer}
 📌 Sub1: ${sub1}
 💰 Выплата: ${sum}
