@@ -43,9 +43,14 @@ app.get("/", async (req, res) => {
     status = "0"
   } = req.query;
 
+  if (status !== "5") {
+    console.log(`🔕 Пропущено: статус = ${status} (не холд)`);
+    return res.send("Ignored (not hold)");
+  }
+
   const statusText = getStatusText(status);
 
-  const message = `🔥 Конверсия получена!
+  const message = `⏸ Конверсия в холде!
 💡 Оффер: ${offer}
 📌 Sub1: ${sub1}
 💰 Выплата: ${sum}
