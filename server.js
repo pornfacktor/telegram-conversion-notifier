@@ -50,7 +50,7 @@ app.get("/", async (req, res) => {
 
   const statusText = getStatusText(status);
 
-  const message = `⏸ Конверсия в холде!
+  const message = `🔥 Новая конверсия! В холде!
 💡 Оффер: ${offer}
 📌 Sub1: ${sub1}
 💰 Выплата: ${sum}
