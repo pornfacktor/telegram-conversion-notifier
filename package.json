@@ -1,6 +1,7 @@
 {
   "name": "telegram-postback",
   "version": "1.0.0",
+  "description": "Webhook для уведомлений о конверсиях в Telegram",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

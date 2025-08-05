@@ -1,3 +1,4 @@
+
 const express = require("express");
 const fetch = require("node-fetch");
 const app = express();
@@ -61,4 +62,5 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("✅ Сервер запущен на порту 3000"));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`✅ Сервер запущен на порту ${PORT}`));
